@@ -3,7 +3,7 @@ MAINTAINER "EEA: IDM2 B-Team"
 
 ENV WARMUP_BIN=/plone/instance/bin/warmup \
     WARMUP_INI=/plone/instance/warmup.ini \
-    WARMUP_HEALTH_THRESHOLD=50000
+    WARMUP_HEALTH_THRESHOLD=5000
 
 COPY buildout.cfg /plone/instance/
 COPY warmup.ini /plone/instance/
