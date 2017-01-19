@@ -10,4 +10,4 @@
 
 ## Installation and usage
 
-See [ENI SEIS Orchestration](https://github.com/eea/eea.docker.www-emrt-necd)
+See [EMRT NECD Orchestration](https://github.com/eea/eea.docker.www-emrt-necd)
