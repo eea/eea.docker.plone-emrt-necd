@@ -1,12 +1,6 @@
 # EMRT NECD Plone Image (based on EEA KGS)
 
-## Base docker image
-
- - [hub.docker.com](https://hub.docker.com/r/eeacms/plone-emrt-necd)
-
-## Source code
-
-  - [github.com](http://github.com/eea/eea.docker.plone-emrt-necd)
+[![Docker]( https://dockerbuildbadges.quelltext.eu/status.svg?organization=eeacms&repository=plone-emrt-necd)](https://hub.docker.com/r/eeacms/plone-emrt-necd/builds)
 
 ## Installation and usage
 
