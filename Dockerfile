@@ -1,4 +1,4 @@
-FROM eeacms/kgs:18.5.29
+FROM eeacms/kgs:18.10.13
 MAINTAINER "EEA: IDM2 B-Team"
 
 ENV WARMUP_BIN=/plone/instance/bin/warmup \
