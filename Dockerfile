@@ -2,8 +2,8 @@ FROM plone:4.3.18
 MAINTAINER "EEA: IDM2 B-Team"
 
 COPY site.cfg /plone/instance/
-
-RUN apt-get update \
+RUN echo "deb http://archive.debian.org/debian stretch main\ndeb http://archive.debian.org/debian-security stretch/updates main" > /etc/apt/sources.list \ 
+ && apt-get update \
  && apt-get install -y --no-install-recommends build-essential \
  libsasl2-dev python-dev libldap2-dev libssl-dev \
  vim libldap-common \
