@@ -5,7 +5,7 @@ COPY site.cfg /plone/instance/
 RUN echo "deb http://archive.debian.org/debian stretch main\ndeb http://archive.debian.org/debian-security stretch/updates main" > /etc/apt/sources.list \ 
  && apt-get update \
  && apt-get install -y --no-install-recommends build-essential \
- libsasl2-dev python-dev libldap2-dev libssl-dev \
+ libsasl2-dev python-dev libldap2-dev libssl-dev openssl \
  vim libldap-common \
  && rm -vrf /var/lib/apt/lists/* \
  && gosu plone buildout -c site.cfg \
