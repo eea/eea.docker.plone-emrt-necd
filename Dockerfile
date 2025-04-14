@@ -1,15 +1,17 @@
 FROM plone:4.3.18
 LABEL maintainer="EEA: IDM2 B-Team <eea-edw-b-team-alerts@googlegroups.com>"
 
-COPY site.cfg /plone/instance/
-RUN echo "deb http://archive.debian.org/debian stretch main\ndeb http://archive.debian.org/debian-security stretch/updates main" > /etc/apt/sources.list \ 
+RUN echo "deb http://archive.debian.org/debian stretch main\ndeb http://archive.debian.org/debian-security stretch/updates main" > /etc/apt/sources.list \
  && apt-get update \
  && apt-get install -y --no-install-recommends build-essential \
  libsasl2-dev python-dev libldap2-dev libssl-dev openssl \
  vim libldap-common \
  && pip install setuptools==38.7.0 zc.buildout==2.13.7 wheel==0.37.1 \
- && rm -vrf /var/lib/apt/lists/* \
- && gosu plone buildout -c site.cfg \
+ && rm -vrf /var/lib/apt/lists/*
+
+COPY site.cfg /plone/instance/
+
+RUN gosu plone buildout -c site.cfg \
  && apt-get purge -y --auto-remove build-essential \
  libsasl2-dev python-dev libssl-dev
 
