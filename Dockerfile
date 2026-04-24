@@ -1,20 +1,20 @@
-FROM plone:4.3.18
+FROM plone/plone-backend:6.1
 LABEL maintainer="EEA: IDM2 B-Team <eea-edw-b-team-alerts@googlegroups.com>"
 
-RUN echo "deb http://archive.debian.org/debian stretch main\ndeb http://archive.debian.org/debian-security stretch/updates main" > /etc/apt/sources.list \
- && apt-get update \
- && apt-get install -y --no-install-recommends build-essential \
- libsasl2-dev python-dev libldap2-dev libssl-dev openssl \
- vim libldap-common \
- && pip install setuptools==38.7.0 zc.buildout==2.13.7 wheel==0.37.1 \
- && rm -vrf /var/lib/apt/lists/*
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends git gcc \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY site.cfg /plone/instance/
-
-RUN gosu plone buildout -c site.cfg \
- && apt-get purge -y --auto-remove build-essential \
- libsasl2-dev python-dev libssl-dev
-
-RUN mv /docker-initialize.py /original_initialize.py
-COPY docker-initialize.py /docker-initialize.py
-RUN chmod +x /docker-initialize.py
+# Install the requested add-ons into the image itself.
+RUN /app/bin/pip install -U pip && /app/bin/pip install --no-cache-dir \
+        "packaging==25" \
+        "setuptools==80.9.0" \
+        "wheel==0.46.2" \
+        "horse-with-no-namespace==20260202.0" \
+        "emrt.necd.content==3.0.6" \
+        "emrt.necd.theme==3.0.2" \
+        "collective.deletepermission==2.0.0a3" \
+    && git clone --depth 1 \
+        https://github.com/david-batranu/plone.formwidget.multifile.git \
+        /app/src/plone.formwidget.multifile \
+    && /app/bin/pip install --no-cache-dir -e /app/src/plone.formwidget.multifile
