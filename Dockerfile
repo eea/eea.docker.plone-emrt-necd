@@ -11,7 +11,7 @@ RUN /app/bin/pip install -U pip && /app/bin/pip install --no-cache-dir \
         "setuptools==80.9.0" \
         "wheel==0.46.2" \
         "horse-with-no-namespace==20260202.0" \
-        "emrt.necd.content==3.1.1" \
+        "emrt.necd.content==3.1.2" \
         "emrt.necd.theme==3.0.2" \
         "collective.deletepermission==2.0.0a3" \
     && git clone --depth 1 \
