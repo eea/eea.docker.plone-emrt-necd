@@ -1,4 +1,4 @@
-FROM plone/plone-backend:6.1
+FROM plone/plone-backend:6.2.3
 LABEL maintainer="EEA: IDM2 B-Team <eea-edw-b-team-alerts@googlegroups.com>"
 
 RUN apt-get update \
